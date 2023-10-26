@@ -1,4 +1,8 @@
 /** @type {import('tailwindcss').Config} */
+
+const defaultTheme = require("tailwindcss/defaultTheme");
+const plugin = require("tailwindcss/plugin");
+
 module.exports = {
   darkMode: ["class"],
   content: [
@@ -16,6 +20,10 @@ module.exports = {
       },
     },
     extend: {
+      fontFamily: {
+        roboto: ["var(--font-roboto)", ...defaultTheme.fontFamily.sans],
+        mono: ["var(--font-mono)", ...defaultTheme.fontFamily.mono],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -65,7 +73,39 @@ module.exports = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+      transitionProperty: {
+        width: "width",
+      },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    plugin(function ({ addUtilities }) {
+      addUtilities({
+        ".max-w-unset": {
+          "max-width": "unset",
+        },
+        ".max-h-unset": {
+          "max-height": "unset",
+        },
+        ".h-unset": {
+          height: "unset",
+        },
+        ".w-unset": {
+          width: "unset",
+        },
+
+        ".center": {
+          display: "flex",
+          "justify-content": "center",
+          "align-items": "center",
+        },
+        ".btwn": {
+          display: "flex",
+          "justify-content": "space-between",
+          "align-items": "center",
+        },
+      });
+    }),
+  ],
 };

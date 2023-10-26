@@ -1,6 +1,25 @@
+"use client";
+
+import React, { useState } from "react";
+import clsx from "clsx";
+
 import Image from "next/image";
 
+const files = [
+  "Search",
+  "Headlines",
+  "Business",
+  "Entertainment",
+  "Health",
+  "Science",
+  "Sports",
+  "Technology",
+  "Hamburger",
+];
+
 export default function Home() {
+    const [open, setOpen] = useState(false);
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <input
@@ -22,6 +41,31 @@ export default function Home() {
           nam modi aliquam provident? Repudiandae impedit ipsum doloremque rerum
           magni, quia autem corrupti porro, fuga reprehenderit quaerat unde in
           vero. Molestias?
+        </div>
+      </div>
+
+      <div>
+        <button onClick={() => setOpen((s) => !s)}>Toggle</button>
+
+        <div
+          className={clsx(
+            "bg-destructive min-h-screen will-change-[width] duration-300 transition-width max-w-[300px] space-y-1",
+            {
+              ["w-16 [&_p_span:last-child]:opacity-0"]: !open,
+              ["w-full [&_p_span:last-child]:opacity-100 [&_p_span:last-child]:delay-100"]:
+                open,
+            }
+          )}
+        >
+          {files.map((f, i) => (
+            <p
+              className="grid text-center py-1 grid-cols-[60px_minmax(0,1fr)] gap-1"
+              key={i}
+            >
+              <span>{i + 1}</span>
+              <span className="text-start transition-opacity">{f}</span>
+            </p>
+          ))}
         </div>
       </div>
 
