@@ -19,7 +19,7 @@ const SideBarItem = ({ id = "", text, icon }: Props) => {
   return (
     <Link
       className={clsx(
-        "link py-4 rounded-r-full items-center grid grid-cols-[80px_minmax(0,1fr)] text-foreground relative transition-colors text-sm xl:text-base ",
+        "link  py-4 rounded-r-full items-center grid grid-cols-[80px_minmax(0,1fr)] text-foreground relative transition-colors text-sm xl:text-base ",
         {
           ["bg-accent text-primary font-bold"]: isActive,
           ["bg-transparent text-foreground"]: !isActive,
@@ -39,7 +39,9 @@ const SideBarItem = ({ id = "", text, icon }: Props) => {
           )}
         />
       </span>
-      <span className="capitalize icon-text pr-2">{text}</span>
+      <span className="capitalize icon-text pr-2  transition-[transform, opacity]">
+        {text}
+      </span>
     </Link>
   );
 };

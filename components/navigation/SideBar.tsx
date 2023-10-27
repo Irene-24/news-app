@@ -48,18 +48,17 @@ const SideBar = () => {
             src={"/images/logo-full.svg"}
             alt="News app logo"
             fill
-            objectPosition="center"
             loading="eager"
           />
         </Link>
       </div>
 
       <div className="first my-2">
-        <SideBarItem text={"Around the world"} icon={<Headlines />} />
+        <SideBarItem text={"Top stories"} icon={<Headlines />} />
       </div>
 
-      <div className="relative my-2 btwn space-x-1 font-mono text-secondary-foreground cat transition-opacity transition-transform">
-        <p className="font-semibold">Categories</p>
+      <div className="relative my-2 btwn space-x-1 font-mono text-secondary-foreground cat transition-[transform, opacity]">
+        <p className="font-semibold text-sm font-mono">Categories</p>
         <hr className="flex-1 border-t-border border-t-2 translate-y-1/2" />
       </div>
 

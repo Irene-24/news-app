@@ -12,13 +12,8 @@ const TabNav = () => {
     if (typeof window !== "undefined") {
       const handleResize = () => {
         setIsOpen(false);
-        // Your resize event logic here
       };
-
-      // Add event listener when component mounts
       window.addEventListener("resize", handleResize);
-
-      // Clean up the event listener when the component unmounts
       return () => {
         window.removeEventListener("resize", handleResize);
       };
@@ -29,11 +24,11 @@ const TabNav = () => {
     <>
       <div
         className={clsx(
-          "fixed hidden md:block bg-background z-10 lg:hidden max-w-[250px] will-change-[width] [&_.cat_p]:delay-100 duration-300 transition-width  top-0 h-screen border-r ",
+          "fixed hidden md:block bg-background z-10 lg:hidden max-w-[250px] will-change-[width] [&_.cat_p]:delay-100  duration-300 transition-width  top-0 h-screen border-r ",
           {
-            ["w-20 [&_.icon-text]:opacity-0 [&_.cat_p]:hidden [&_.cat]:space-x-0 [&_.first_.icon-text]:sr-only  [&_.cat_p]:scale-0 [&_.cat_p]:opacity-0 [&_.cat]:mb-0"]:
+            ["w-20 [&_.icon-text]:opacity-0 [&_.cat_p]:hidden [&_.cat]:space-x-0 [&_.first_.icon-text]:sr-only  [&_.cat_p]:scale-0 [&_.cat_p]:opacity-0 [&_.cat]:mb-0 marker:"]:
               !isOpen,
-            ["w-full [&_.icon-text]:opacity-100  [&_.icon-text]:delay-100 [&_.cat_p]:scale-100 [&_.cat_p]:opacity-100 [&_.link]:mr-2 "]:
+            ["w-full [&_.icon-text]:opacity-100  [&_.icon-text]:delay-100 [&_.cat_p]:scale-100 [&_.cat_p]:opacity-100 [&_.cat_p]:pl-2 [&_.link]:mr-2 "]:
               isOpen,
           }
         )}
