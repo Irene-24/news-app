@@ -15,6 +15,8 @@ const SearchInput = () => {
     const val = e.target.value;
     //preserve search value across all instances
     window.sessionStorage.setItem("query", val);
+
+    //debounce and preload?
     setQuery(val);
   };
 
@@ -23,9 +25,11 @@ const SearchInput = () => {
     const keywords = query
       .split(",")
       .map((k) => k?.trim())
-      .filter((k) => k);
+      .filter((k) => k)
+      .map((k) => `keywords=${encodeURIComponent(k)}`)
+      .join("&");
 
-    router.push(`/search`);
+    router.push(`/search?${keywords}`);
   };
 
   useEffect(() => {

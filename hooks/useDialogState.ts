@@ -1,10 +1,11 @@
-import { usePathname } from "next/navigation";
+import { usePathname,useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
 const useDialogState = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const path = usePathname();
+  const params = useSearchParams()
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -20,7 +21,7 @@ const useDialogState = () => {
 
   useEffect(() => {
     setIsOpen(false);
-  }, [path]);
+  }, [path, params]);
 
   return { isOpen, setIsOpen };
 };

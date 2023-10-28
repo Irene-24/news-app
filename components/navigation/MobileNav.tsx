@@ -22,7 +22,11 @@ const MobileNav = () => {
         </nav>
       </div>
 
-      <SheetContent side="left" className="px-0 py-1.5 [&_.cat_p]:pl-2">
+      <SheetContent
+        sheetCloseClass="sr-only"
+        side="left"
+        className="px-0 py-1.5 [&_.cat_p]:pl-2"
+      >
         <SideBar />
       </SheetContent>
     </Sheet>
