@@ -1,3 +1,4 @@
+import NumberInputWithDelimiter from "@/components/converter/InputWithDelimiter";
 import React from "react";
 
 const Headlines = () => {
@@ -10,6 +11,8 @@ const Headlines = () => {
       <h5>Global</h5>
       <h5>Global</h5>
       <p>Global</p>
+
+      <NumberInputWithDelimiter delimiter=" " />
 
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis,
