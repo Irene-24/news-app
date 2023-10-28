@@ -12,6 +12,20 @@ module.exports = {
     "./src/**/*.{ts,tsx}",
   ],
   theme: {
+    screens: {
+      "2xs": "300px",
+      xs: "400px",
+      sm: "640px",
+      md: "768px",
+      lg: "1024px",
+      xl: "1280px",
+      "2xl": "1350px",
+      "3xl": "1440px",
+      "4xl": "1536px",
+      "5xl": "1920px",
+      xxl: "2560px",
+      tiny: { raw: "((max-height: 400px) and (max-width:300px))" },
+    },
     container: {
       center: true,
       padding: "2rem",

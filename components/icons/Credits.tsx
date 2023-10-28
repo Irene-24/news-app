@@ -1,6 +1,6 @@
 import React, { ComponentProps } from "react";
 
-const Hamburger = ({ className, ...props }: ComponentProps<"svg">) => {
+const Credits = ({ className, ...props }: ComponentProps<"svg">) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13,11 +13,10 @@ const Hamburger = ({ className, ...props }: ComponentProps<"svg">) => {
       className={`w-6 h-6 ${className}`}
       {...props}
     >
-      <path d="M17 6.1H3" />
-      <path d="M21 12.1H3" />
-      <path d="M15.1 18H3" />
+      <circle cx={12} cy={8} r={6} />
+      <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11" />
     </svg>
   );
 };
 
-export default Hamburger;
+export default Credits;

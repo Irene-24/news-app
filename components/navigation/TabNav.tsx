@@ -1,34 +1,24 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
 import SideBar from "./SideBar";
-import Image from "next/image";
 import clsx from "clsx";
+import Hamburger from "@/icons/Hamburger";
+import useDialogState from "@/hooks/useDialogState";
 
 const TabNav = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const handleResize = () => {
-        setIsOpen(false);
-      };
-      window.addEventListener("resize", handleResize);
-      return () => {
-        window.removeEventListener("resize", handleResize);
-      };
-    }
-  }, []);
-
+  const { isOpen, setIsOpen } = useDialogState();
   return (
     <>
       <div
         className={clsx(
           "fixed hidden md:block bg-background z-10 lg:hidden max-w-[250px] will-change-[width] [&_.cat_p]:delay-100  duration-300 transition-width  top-0 h-screen border-r ",
+          isOpen
+            ? "[&_.cat_p]:scale-100 [&_.cat_p]:opacity-100"
+            : "[&_.icon-text]:opacity-0  [&_.cat_p]:scale-0 [&_.cat_p]:opacity-0 ",
           {
-            ["w-20 [&_.icon-text]:opacity-0 [&_.cat_p]:hidden [&_.cat]:space-x-0 [&_.first_.icon-text]:sr-only  [&_.cat_p]:scale-0 [&_.cat_p]:opacity-0 [&_.cat]:mb-0 marker:"]:
+            ["w-20  [&_.cat_p]:hidden [&_.cat]:space-x-0 [&_.first_.icon-text]:sr-only [&_.cat]:mb-0 "]:
               !isOpen,
-            ["w-full [&_.icon-text]:opacity-100  [&_.icon-text]:delay-100 [&_.cat_p]:scale-100 [&_.cat_p]:opacity-100 [&_.cat_p]:pl-2 [&_.link]:mr-2 "]:
+            ["w-full [&_.icon-text]:opacity-100 [&_.icon-text]:delay-100  [&_.cat_p]:pl-2 [&_.link]:mr-2 "]:
               isOpen,
           }
         )}
@@ -43,10 +33,14 @@ const TabNav = () => {
         )}
       />
 
-      <section className="hidden p-2 bg-destructive md:block lg:hidden fixed right-3 bottom-3 z-10">
-        <button onClick={() => setIsOpen((s) => !s)}>Menu</button>
-        <p>1</p>
-        <p>1</p>
+      <section className="hidden p-2  space-y-1 md:block lg:hidden fixed right-3 bottom-3 z-50">
+        <button
+          className={clsx("center text-white bg-primary rounded-md p-1.5")}
+          onClick={() => setIsOpen((s) => !s)}
+        >
+          <Hamburger />
+          <span className="sr-only"> {isOpen ? "Close" : "Open"} Menu</span>
+        </button>
       </section>
     </>
   );

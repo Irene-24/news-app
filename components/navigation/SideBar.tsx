@@ -7,6 +7,8 @@ import Business from "@/icons/Business";
 import Entertainment from "@/icons/Entertainment";
 import Health from "@/icons/Health";
 import Sports from "@/icons/Sports";
+import Credits from "@/icons/Credits";
+
 import Technology from "@/icons/Technology";
 import SideBarItem from "./SideBarItem";
 
@@ -41,7 +43,7 @@ const links = [
 const SideBar = () => {
   return (
     <nav className="h-full flex flex-col">
-      <div className="center overflow-x-hidden p-2">
+      <div className="center overflow-x-hidden p-2 ">
         <Link className="block w-full h-10 relative " href="/">
           <span className="sr-only">Aster news</span>
           <Image
@@ -69,6 +71,10 @@ const SideBar = () => {
               <SideBarItem id={li.id} text={li.text} icon={li.icon} />
             </li>
           ))}
+
+          <li className=" py-2 !my-3 border-t border-b block">
+            <SideBarItem id={"credits"} text={"Credits"} icon={<Credits />} />
+          </li>
         </ul>
       </ScrollArea>
     </nav>

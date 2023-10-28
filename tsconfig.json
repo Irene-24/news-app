@@ -25,6 +25,8 @@
       }
     ],
     "paths": {
+      "@/hooks/*": ["./hooks/*"],
+
       "@/icons/*": ["./components/icons/*"],
       "@/components/*": ["./components/*"],
       "@/utils/*": ["./lib/utils/*"],
