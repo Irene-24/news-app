@@ -1,18 +1,23 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import React, { useId, useState, useEffect } from "react";
+import React, { useId, useState } from "react";
 import { Label } from "@/components/ui/label";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 import { Category } from "@/lib/types/requests.types";
+import { useAppDispatch, useAppSelector } from "@/redux/store";
+import { selectAppState, setQuery } from "@/redux/slice";
 
 const options = ["business", "entertainment", "health", "sports", "technology"];
 
 const SearchInput = () => {
-  const [query, setQuery] = useState("");
   const [cat, setCat] = useState<Category | "">("");
+
+  const dispatch = useAppDispatch();
+
+  const { query } = useAppSelector(selectAppState);
 
   const router = useRouter();
 
@@ -21,10 +26,7 @@ const SearchInput = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const val = e.target.value;
-    //preserve search value across all instances
-    window.sessionStorage.setItem("query", val);
-
-    setQuery(val);
+    dispatch(setQuery(val));
   };
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -42,10 +44,6 @@ const SearchInput = () => {
       router.push(`/search?${fullQuery}`);
     }
   };
-
-  useEffect(() => {
-    setQuery(window.sessionStorage.getItem("query") || "");
-  }, []);
 
   const handleCatChange = (c: Category) => {
     setCat(c);

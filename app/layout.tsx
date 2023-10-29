@@ -6,6 +6,8 @@ import TabNav from "@/components/navigation/TabNav";
 import Container from "@/components/Container";
 import JumpToTopOrBottom from "@/components/navigation/JumpToTopOrBottom";
 import MobileNav from "@/components/navigation/MobileNav";
+import RTKProvider from "@/components/providers/RTKProvider";
+import DesktopJokes from "@/components/jokes/DesktopJokes";
 
 const roboto = Roboto({
   weight: ["400", "500", "700", "900"],
@@ -61,32 +63,31 @@ export default function RootLayout({
         <meta name="theme-color" content="#f4f9f8" />
       </head>
       <body className={roboto.className}>
-        <Container>
-          <div className="md:grid md:gap-[1.5%] grid-cols-1 md:grid-cols-[80px_minmax(0,1fr)] lg:grid-cols-[minmax(250px,0.2fr)_minmax(0,1fr)] min-h-screen">
-            <aside className="">
-              <MobileNav />
-              <TabNav />
-              <DesktopNav />
-            </aside>
+        <RTKProvider>
+          <Container>
+            <div className="md:grid md:gap-[1.5%] grid-cols-1 md:grid-cols-[80px_minmax(0,1fr)] lg:grid-cols-[minmax(250px,0.2fr)_minmax(0,1fr)] min-h-screen">
+              <aside className="">
+                <MobileNav />
+                <TabNav />
+                <DesktopNav />
+              </aside>
 
-            <main className="grid gap-y-4 gap-x-[1.5%] grid-cols-1 lg:grid-cols-[minmax(min(100%,100px),1fr)_minmax(min(100%,250px),0.2fr)]">
-              {children}
+              <main className="grid gap-y-4 gap-x-[1.5%] grid-cols-1 lg:grid-cols-[minmax(min(100%,100px),1fr)_minmax(min(100%,250px),0.2fr)]">
+                {children}
 
-              {/* <div>
+                {/* <div>
                 <JumpToTopOrBottom />
 
                 <JumpToTopOrBottom />
               </div> */}
 
-              <section className="lg:sticky lg:h-screen top-0 space-y-2 p-2">
-                {/* <MobileJokesSwap/> ===> drawer right
-<DesktopJokesWsap/> sticky left */}
-                {/* <div className="h-[100px] bg-accent p-1" id="jokes"></div>
-                <div className="h-[100px] bg-muted p-1" id="swap"></div> */}
-              </section>
-            </main>
-          </div>
-        </Container>
+                <section className="top-0 p-2 space-y-2 lg:sticky lg:h-screen">
+                  <DesktopJokes />
+                </section>
+              </main>
+            </div>
+          </Container>
+        </RTKProvider>
       </body>
     </html>
   );
