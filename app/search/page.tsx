@@ -7,7 +7,13 @@ export const metadata: Metadata = {
   title: `Aster News: Search`,
 };
 
-const Search = () => {
+type Props = {
+  searchParams?: { [key: string]: string | string[] | undefined };
+};
+
+const Search = ({ searchParams }: Props) => {
+  console.log({ searchParams });
+
   return (
     <div>
       <h1>Search</h1>

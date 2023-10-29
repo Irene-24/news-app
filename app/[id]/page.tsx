@@ -1,16 +1,18 @@
 import React from "react";
 import type { Metadata, ResolvingMetadata } from "next";
 import { capitalizeFirstLetter } from "@/lib/stringHelpers";
+import { getFirstPageOfArticles } from "@/lib/fetchData";
+import { Category } from "@/lib/types/requests.types";
 
 type Props = {
-  params: { id: string };
+  params: { id: Category };
 };
 
 export async function generateMetadata(
   { params }: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const id = params.id as string;
+  const id = params.id as Category;
 
   return {
     description: `Get the latest updates in "${id}" worldwide`,
@@ -18,7 +20,13 @@ export async function generateMetadata(
   };
 }
 
-const News = ({ params }: Props) => {
+const News = async ({ params }: Props) => {
+  // const res = await getFirstPageOfArticles({ categories: params.id });
+
+  // if (res.error) {
+  //   throw new Error(`Unable to load articles` || errorMsg);
+  // }
+
   return (
     <div>
       <h1 className="capitalize">{params.id}</h1>
