@@ -37,6 +37,7 @@ module.exports = {
       fontFamily: {
         roboto: ["var(--font-roboto)", ...defaultTheme.fontFamily.sans],
         mono: ["var(--font-mono)", ...defaultTheme.fontFamily.mono],
+        shan: ["var(--font-shan)", ...defaultTheme.fontFamily.sans],
       },
       colors: {
         border: "hsl(var(--border))",

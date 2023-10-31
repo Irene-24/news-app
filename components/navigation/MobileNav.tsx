@@ -5,8 +5,14 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import SideBar from "./SideBar";
 import MobileSearch from "@/components/search/MobileSearch";
 import useDialogState from "@/hooks/useDialogState";
+import MobileJokes from "@/components/jokes/MobileJokes";
+import MobileConverter from "@/components/converter/MobileConverter";
 
-const MobileNav = () => {
+interface Props {
+  jokesComp: React.ReactNode;
+}
+
+const MobileNav = ({ jokesComp }: Props) => {
   const { isOpen, setIsOpen } = useDialogState();
 
   return (
@@ -19,6 +25,12 @@ const MobileNav = () => {
           </SheetTrigger>
 
           <MobileSearch />
+
+          <MobileJokes contentClass="max-w-[95vw] sm:max-w-[500px]">
+            {jokesComp}
+          </MobileJokes>
+
+          <MobileConverter />
         </nav>
       </div>
 

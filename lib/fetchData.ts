@@ -1,16 +1,8 @@
 import "server-only";
 
-import {
-  getRatesApiUrl,
-  NEWS_PAGE_SIZE,
-  NEWS_API,
-  getSupportedSymbolsApiUrl,
-  JOKES_API,
-} from "@/lib/constants";
+import { NEWS_PAGE_SIZE, NEWS_API, JOKES_API, DAY } from "@/lib/constants";
 import { Category, FirstPageArgs } from "./types/requests.types";
 import { FullJokesRes } from "./types/responses.types";
-
-const DAY = 86400;
 
 export async function getFirstPageOfArticles({
   categories,

@@ -1,13 +1,15 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Roboto, Source_Code_Pro } from "next/font/google";
+import { Roboto, Source_Code_Pro, Shantell_Sans } from "next/font/google";
 import DesktopNav from "@/components/navigation/DesktopNav";
 import TabNav from "@/components/navigation/TabNav";
 import Container from "@/components/Container";
 import JumpToTopOrBottom from "@/components/navigation/JumpToTopOrBottom";
 import MobileNav from "@/components/navigation/MobileNav";
 import RTKProvider from "@/components/providers/RTKProvider";
+import JokesWrapper from "@/components/jokes/JokesWrapper";
 import DesktopJokes from "@/components/jokes/DesktopJokes";
+import DesktopConverter from "@/components/converter/DesktopConverter";
 
 const roboto = Roboto({
   weight: ["400", "500", "700", "900"],
@@ -16,12 +18,20 @@ const roboto = Roboto({
   display: "swap",
   variable: "--font-roboto",
 });
+
 const mono = Source_Code_Pro({
   weight: ["600"],
-  style: ["normal", "italic"],
+  style: ["normal"],
   subsets: ["latin"],
   display: "swap",
   variable: "--font-mono",
+});
+
+const shan = Shantell_Sans({
+  style: ["normal"],
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-shan",
 });
 
 export const metadata: Metadata = {
@@ -37,7 +47,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${roboto.variable} scroll-smooth ${mono.variable}`}
+      className={`${roboto.variable} scroll-smooth ${mono.variable} ${shan.variable}`}
     >
       <head>
         <link
@@ -67,8 +77,8 @@ export default function RootLayout({
           <Container>
             <div className="md:grid md:gap-[1.5%] grid-cols-1 md:grid-cols-[80px_minmax(0,1fr)] lg:grid-cols-[minmax(250px,0.2fr)_minmax(0,1fr)] min-h-screen">
               <aside className="">
-                <MobileNav />
-                <TabNav />
+                <MobileNav jokesComp={<JokesWrapper />} />
+                <TabNav jokesComp={<JokesWrapper />} />
                 <DesktopNav />
               </aside>
 
@@ -83,11 +93,18 @@ export default function RootLayout({
 
                 <section className="top-0 p-2 space-y-2 lg:sticky lg:h-screen">
                   <DesktopJokes />
+                  <DesktopConverter />
                 </section>
               </main>
             </div>
           </Container>
         </RTKProvider>
+        <br />
+        <br />
+        <br />
+        <br /> <br />
+        <br />
+        <br />
       </body>
     </html>
   );

@@ -114,3 +114,16 @@ export const restrictToNumberAndOneDot = (value?: string) => {
 
   return num;
 };
+
+export const formatWithDelimiter = (val: string, delimiter: string) => {
+  const value = restrictToNumberAndOneDot(val);
+
+  const escapedDelimiter = RegExp.escape(delimiter);
+
+  const formattedInput = value.replace(
+    /\B(?=(\d{3})+(?!\d))/g,
+    escapedDelimiter
+  );
+
+  return { formattedInput, value };
+};

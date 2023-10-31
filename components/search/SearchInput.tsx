@@ -54,7 +54,7 @@ const SearchInput = () => {
       className="flex-col tiny:max-h-[75vh] max-h-96 flex "
       onSubmit={onSubmit}
     >
-      <div className="mt-4 space-x-1 center">
+      <div className="space-x-[2%] center">
         <label className="flex-1 " htmlFor={inputId}>
           <input
             aria-describedby={instructionsId}
@@ -79,13 +79,13 @@ const SearchInput = () => {
       </div>
 
       <section className="flex items-center mt-3 space-x-1">
-        <p className="basis-[15%] text-sm font-medium ">Filter By Category?</p>
+        <p className="basis-[15%] text-sm font-medium ">By Category?</p>
         <RadioGroup
           className="flex-1 "
           value={cat}
           onValueChange={handleCatChange}
         >
-          <div className="gap-1 gap-y-1.5 grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] xs:grid-cols-[repeat(auto-fit,minmax(120px,1fr))] ">
+          <div className="gap-1.5 sm:grid flex flex-wrap  items-center  sm:grid-cols-[repeat(auto-fit,minmax(90px,1fr))] ">
             {options.map((opt) => (
               <div className="flex items-center space-x-2" key={opt}>
                 <RadioGroupItem
@@ -110,47 +110,46 @@ const SearchInput = () => {
 
         <p className="!text-sm">
           To narrow down your search for articles even more, you can specify one
-          or multiple comma-separated search keywords. As with other parameters,
-          you can also exclude keywords by prepending a - symbol. Find a few
-          clarifications about this parameter below.
+          or multiple comma-separated search keywords. You can also exclude
+          keywords by prepending a <q>-</q> symbol. Find a few clarifications
+          about this below.
         </p>
 
         <ul className="p-5 space-y-3 list-disc ">
           <li>
             <code className="p-1 text-xs font-medium rounded bg-destructive text-destructive-foreground">
-              &amp; keywords = food industry
+              food industry
             </code>{" "}
-            - Search for keyword
-            <q>food industry</q>
+            - Search for keyword <q>food industry</q>
           </li>
           <li>
             <code className="p-1 text-xs font-medium rounded bg-destructive text-destructive-foreground">
-              &amp; keywords = food industry, meat
-            </code>{" "}
+              food industry, meat
+            </code>
             - Search for keywords <q>food industry</q> and <q>meat</q>
           </li>
           <li>
             <code className="p-1 text-xs font-medium rounded bg-destructive text-destructive-foreground">
-              &amp; keywords = food industry, -meat
+              food industry, -meat
             </code>{" "}
             - Search for keywords <q>food industry</q>, but exclude <q>meat</q>
           </li>
           <li>
             <code className="p-1 text-xs font-medium rounded bg-destructive text-destructive-foreground">
-              &amp; keywords = -food industry, -meat
+              -food industry, -meat
             </code>{" "}
             - Search for all news, excluding <q>food industry</q> and{" "}
             <q>meat</q>
           </li>
           <li>
             <code className="p-1 text-xs font-medium rounded bg-destructive text-destructive-foreground">
-              &amp; keywords = a-plus
+              a-plus
             </code>{" "}
             - Search for keyword <q>a-plus</q>
           </li>
           <li>
             <code className="p-1 text-xs font-medium rounded bg-destructive text-destructive-foreground">
-              &amp; keywords = a, -plus
+              a, -plus
             </code>{" "}
             - Search for keyword <q>a</q>, but exclude <q>plus</q>
           </li>

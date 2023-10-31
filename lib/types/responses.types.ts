@@ -57,6 +57,11 @@ export interface SupportedSymbols {
   symbols: Record<string, string>;
 }
 
+export interface CurrencyItem {
+  symbol: string;
+  name: string;
+}
+
 export interface Rate {
   [key: string]: number;
 }

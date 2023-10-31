@@ -4,8 +4,14 @@ import SideBar from "./SideBar";
 import clsx from "clsx";
 import Hamburger from "@/icons/Hamburger";
 import useDialogState from "@/hooks/useDialogState";
+import MobileJokes from "../jokes/MobileJokes";
+import MobileConverter from "../converter/MobileConverter";
 
-const TabNav = () => {
+interface Props {
+  jokesComp: React.ReactNode;
+}
+
+const TabNav = ({ jokesComp }: Props) => {
   const { isOpen, setIsOpen } = useDialogState();
   return (
     <>
@@ -33,7 +39,13 @@ const TabNav = () => {
         )}
       />
 
-      <section className="hidden p-2  space-y-1 md:block lg:hidden fixed right-3 bottom-3 z-50">
+      <section className="hidden p-2 [&_.nav-btn]:ring-[1.5px]  [&_.nav-btn]:ring-inset [&_.nav-btn]:bg-white [&_.nav-btn]:rounded-full [&_.nav-btn]:min-h-[64px] [&_.nav-btn_span]:text-[10px] [&_.nav-btn]:px-1.5 [&_.nav-btn]:py-1 space-y-1 md:block lg:hidden fixed right-3 bottom-3 z-50">
+        <MobileJokes contentClass="max-w-[45vw] pt-[4vw]">
+          {jokesComp}
+        </MobileJokes>
+
+        <MobileConverter />
+
         <button
           className={clsx("center text-white bg-primary rounded-md p-1.5")}
           onClick={() => setIsOpen((s) => !s)}

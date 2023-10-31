@@ -8,3 +8,9 @@ declare global {
     }
   }
 }
+
+declare global {
+  interface RegExpConstructor {
+    escape(text: string): string;
+  }
+}

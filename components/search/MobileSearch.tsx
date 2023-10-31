@@ -15,7 +15,10 @@ const MobileSearch = () => {
         <Search />
         <span className="sr-only text-xs  2xs:not-sr-only">Search</span>
       </DialogTrigger>
-      <DialogContent className="mx-auto max-w-[95vw]">
+      <DialogContent
+        dialogCloseClass="bg-destructive text-white rounded-full p-2 -translate-y-[10%]"
+        className="mx-auto p-4 pt-[20vw] xs:pt-[15vw] max-w-[95vw]"
+      >
         <SearchInput />
       </DialogContent>
     </Dialog>

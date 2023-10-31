@@ -5,7 +5,7 @@ import JokesWrapper from "./JokesWrapper";
 
 const DesktopJokes = () => {
   return (
-    <div className="lg:block">
+    <div className="hidden overflow-hidden rounded-xl p-2  [&_.font-shan]:bg-popover lg:block">
       <JokesWrapper />
     </div>
   );

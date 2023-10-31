@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { RateRes, SupportedSymbols } from "@/types/responses.types";
+import { RateRes, CurrencyItem } from "@/types/responses.types";
 
 const baseQuery = fetchBaseQuery({
   baseUrl: "/api",
@@ -18,12 +18,10 @@ export const baseApi = createApi({
       //   response.data,
     }),
 
-    getSymbols: build.query<SupportedSymbols["symbols"], void>({
+    getSymbols: build.query<CurrencyItem[], void>({
       query: () => ({
         url: `/symbols`,
       }),
-      // transformResponse: (response: { data: SessionsInfo[] }) =>
-      //   response.data,
     }),
 
     getRates: build.query<RateRes, void>({
